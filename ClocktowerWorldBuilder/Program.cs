@@ -51,8 +51,17 @@ var solution = gameSolver.Solve();
 solution.PrintAllWorlds();
 solution.PrintArrangements();
 solution.PrintProbabilities();
-var filtedSolutions = solution.Filter( //This is a demonstration of the constraint system. Here I am filtering for games where poisoner is in play and player 0 is good
+
+
+//Below are some sample functions you can also use
+/*
+var filteredSolutions = solution.Filter( //This is a demonstration of the constraint system. Here I am filtering for games where poisoner is in play and player 0 is good
     new AndConstraint([
-            new IsAlignment(0,Alignment.Good),
-            new RoleNotInPlayConstraint(new(typeof(Poisoner)),  Timestamp.GENESIS) //The second  parameter is the point at which the role died/ceased to exist
+        new IsAlignment(0,Alignment.Good),
+        new RoleNotInPlayConstraint(new(typeof(Poisoner)),  Timestamp.GENESIS) //The second  parameter is the point at which the role died/ceased to exist
     ]));
+Console.WriteLine("Here is a summary of just one filtered world:");
+var specificWorld = filteredSolutions.Worlds[0];
+specificWorld.Summary();
+var sortedWorlds = filteredSolutions.SortByArrangements();
+*/

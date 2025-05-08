@@ -160,7 +160,7 @@ public class SolvedGame
         } 
         Console.WriteLine($"Outputted {Worlds.Count} worlds.");
     }
-    public void PrintArrangements()
+    public Dictionary<List<RoleTemplate>,List<World>> SortByArrangements()
     {
         Dictionary<List<RoleTemplate>,List<World>> arrangements = new(new ListComparer<RoleTemplate>());
         foreach (World world in Worlds)
@@ -183,6 +183,13 @@ public class SolvedGame
                 arrangements.Add(roles,[world]); 
             }
         }
+
+        return arrangements;
+
+    }
+    public void PrintArrangements()
+    {
+        var arrangements = SortByArrangements();
         Console.WriteLine("---------------------------");
         Console.WriteLine("Arrangements:");
         Console.WriteLine("-------");
