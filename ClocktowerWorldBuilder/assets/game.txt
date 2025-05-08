@@ -1,0 +1,34 @@
+﻿Game 1:
+Starting Info
+Chef: 1
+Washerwoman learns that either the spy or the virgin is the investigator
+Spy claims that either the chef or the slayer are spy
+Slayer shoots fortune teller
+Fortune teller investigates the imp and the virgin and gets a yes
+
+
+Slayer gets executed
+
+
+Day 2:
+
+Fortune teller investigates himself and the virgin and gets a yes
+Washerwoman gets killed
+Imp claims undertaker and saw Imp
+Day 3:
+Imp kills himself
+Chef nominates virgin and dies
+
+Day 4:
+Virgin is killed
+Fortune teller picks himself and the slayer and gets a yes
+
+
+
+
+
+
+
+
+
+
