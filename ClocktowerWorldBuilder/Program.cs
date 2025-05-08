@@ -1,9 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Data;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using ClocktowerWorldBuilder;
+﻿using ClocktowerWorldBuilder;
 using ClocktowerWorldBuilder.Condition;
 using ClocktowerWorldBuilder.Condition.CommonConstraints;
 using ClocktowerWorldBuilder.Condition.RoleSpecific.Minion;

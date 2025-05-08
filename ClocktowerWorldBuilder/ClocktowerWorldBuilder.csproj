@@ -13,8 +13,4 @@
       <PackageReference Include="RangeTree" Version="3.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="docs\" />
-    </ItemGroup>
-
 </Project>

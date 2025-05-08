@@ -28,7 +28,7 @@ Minions work for the demon. They conceal who the real demon is by spreading misi
 There is only one demon on Trouble Brewing: the Imp. When executed, good team wins. Each night the imp eliminates someone from the game.
 
 ## Using the Solver
-Sample code can be found in `Program.cs`. That file details how to use it on your own games.
+Sample code can be found in `ClocktowerWorldBuilder/Program.cs`. That file details how to use it on your own games.
 
 ## Limitations
 This can handle everything in Trouble Brewing except Recluse starpassing, which never happens.
