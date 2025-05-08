@@ -655,29 +655,6 @@ public class World: ICloneable
             );
         }
     }
-    public void Print()
-    {
-        SimplifyImpData();
-        var world = this;
-        int lp = -1; 
-        foreach (Player p in world.Players)
-        {
-            lp++;
-            Console.WriteLine(lp+" :"+p.Alignment +" " +p.Role);
-        }
-                    
-        Console.WriteLine("Poisons: "+String.Join(", ",world.Poisons));
-        Console.WriteLine("Sobers: "+String.Join(", ",world.Sobers));
-        Console.WriteLine("Confirmed: "+String.Join(",",world.Confirmations));
-        Console.WriteLine("Counter Confirms"+String.Join(",",world.CounterConfirmations));
-        Console.WriteLine("Outsider Count: "+world.TotalOutsiders);
-        Console.WriteLine("In Play Minions: "+(world._inPlayMinionCount+world.ConfirmedMinions));
-        Console.WriteLine("Imp Data "+ String.Join(",",world.DemonByDay.Select(kv =>$"({kv.From} to {kv.To}, {kv.Value})")));
-        Console.WriteLine("Not Imp Data "+ String.Join(",",world.NotDemonByDay.Select(kv =>$"({kv.From} to {kv.To},"+String.Join(",",kv.Value)+")")));
-        Console.WriteLine("Red Herring "+ world.RedHerring);
-        Console.WriteLine("Not Red Herring "+ String.Join(",",world.NotRedHerring));
-        Console.WriteLine("-------------------------------------------------------");
-    }
     public void Enqueue(Constraint constraint)
     {
         Debug.Assert(!float.IsNaN(constraint.Priority));
