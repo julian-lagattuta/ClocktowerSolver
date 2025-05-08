@@ -97,21 +97,58 @@ public class SolvedGame
     }
     private float Probability(Func<World,bool> condition)
     {
-        Dictionary<HashSet<RoleTemplate>, List<World>> bags = GenerateBags();
-        float probability = 0;
-        foreach(var bag in bags)
-        {
-            float interiorSum = 0;
-            foreach(var world in bag.Value)
-            {
-                if(condition(world)){
-                    interiorSum++;
-                } 
-            } 
-            probability += interiorSum / bag.Value.Count;
-        }
         
-        return probability/bags.Count;
+        Dictionary<HashSet<RoleTemplate>, List<World>> bags = GenerateBags();
+        Dictionary<HashSet<RoleTemplate>, Dictionary<HashSet<RoleTemplate>, List<World>>> minionOutsiderWorlds=
+            new(new HashSetComparer<RoleTemplate>());
+        int evilOutisderVariations = 0; 
+        foreach(var (bag,worlds) in bags)
+        {
+            HashSet<RoleTemplate> minions = new HashSet<RoleTemplate>();
+            HashSet<RoleTemplate> outsiders= new HashSet<RoleTemplate>();
+            foreach(var role in bag)
+            {
+                if(role.RoleType== RoleType.Minion)
+                {
+                    minions.Add(role); 
+                }else if(role.RoleType == RoleType.Outsider){
+                    outsiders.Add(role);
+                }
+            }
+            if(minionOutsiderWorlds.TryGetValue(minions,out var minionWorlds))
+            {
+                if(minionWorlds.TryGetValue(outsiders,out var outsiderWorlds))
+                {
+                    outsiderWorlds.AddRange(worlds);
+                }else{
+                    evilOutisderVariations++;
+                    minionWorlds[outsiders] = new(worlds);
+                }
+            }else
+            {
+                evilOutisderVariations++;
+                minionOutsiderWorlds[minions] = new(new HashSetComparer<RoleTemplate>());
+                minionOutsiderWorlds[minions][outsiders] = new List<World>(worlds);
+            }
+        }
+
+        float probability = 0;
+        foreach(var (minions, outsiderData) in minionOutsiderWorlds)
+        {
+            foreach(var (outsiders, worlds) in outsiderData)
+            {
+                float interiorSum = 0;
+                foreach(var world in worlds)
+                {
+                    if(condition(world)){
+                        interiorSum++;
+                    } 
+                } 
+                probability += interiorSum /worlds.Count;
+            }
+        }
+
+        return probability / evilOutisderVariations;
     }
     public float ProbabilityIsRole(int playerId, RoleTemplate role)
     {
