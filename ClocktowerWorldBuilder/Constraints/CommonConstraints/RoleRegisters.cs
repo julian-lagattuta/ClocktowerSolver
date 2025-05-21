@@ -27,7 +27,7 @@ public class RoleRegisters: SubConstraint
                     new IsImpAtTimestampConstraint(playerId, new(day,0),null),
                     // ])
                     new AndConstraint([
-                        new IsRole(playerId, new RoleTemplate(typeof(Recluse))),//TODO NEED TO ADD ISALIVE CONSTRAINT. SAME FOR SPY
+                        new IsRole(playerId, new RoleTemplate(typeof(Recluse))),
                         new SobrietyApply(playerId,day) //not poisoned
                     ])
                 ]);

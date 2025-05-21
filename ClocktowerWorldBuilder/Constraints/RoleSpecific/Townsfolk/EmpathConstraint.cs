@@ -40,14 +40,14 @@ public class EmpathConstraint: TemporalConstraint
         {
             rightPlayerId+= -1;
             rightPlayerId= Util.Mod(rightPlayerId, claimWorld.Script.PlayerCount);
-            rightPlayer= claimWorld.PlayerStatuses[(leftPlayerId)]; 
+            rightPlayer= claimWorld.PlayerStatuses[(rightPlayerId)]; 
         }
 
         switch (Info[dayMinusOne])
         {
             case 0:
-                totalConstraints.Add(new AlignmentRegistersConstraint(leftPlayerId, dayMinusOne,Alignment.Good)); 
-                totalConstraints.Add(new AlignmentRegistersConstraint(rightPlayerId, dayMinusOne,Alignment.Good));
+                totalConstraints.Add(new AlignmentRegistersConstraint(leftPlayerId, dayMinusOne+1,Alignment.Good)); 
+                totalConstraints.Add(new AlignmentRegistersConstraint(rightPlayerId, dayMinusOne+1,Alignment.Good));
                 break;
             case 1:
                 totalConstraints.Add(new OrConstraint([
@@ -62,8 +62,8 @@ public class EmpathConstraint: TemporalConstraint
                 ]));
                 break;
             case 2:
-                totalConstraints.Add(new AlignmentRegistersConstraint(leftPlayerId, dayMinusOne,Alignment.Evil));
-                totalConstraints.Add(new AlignmentRegistersConstraint(rightPlayerId, dayMinusOne,Alignment.Evil));
+                totalConstraints.Add(new AlignmentRegistersConstraint(leftPlayerId, dayMinusOne+1,Alignment.Evil));
+                totalConstraints.Add(new AlignmentRegistersConstraint(rightPlayerId, dayMinusOne+1,Alignment.Evil));
                 break;
             default:
                 totalConstraints.Add(new NeverConstraint());
